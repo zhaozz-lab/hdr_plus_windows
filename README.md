@@ -1,5 +1,5 @@
 compile in windows using visual studio 2022 or visual studio 2022 
-
+44
 
 # HDR+ Implementation
 Original Document on the subject (by Timothy Brooks): http://timothybrooks.com/tech/hdr-plus
