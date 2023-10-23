@@ -1,10 +1,10 @@
 #pragma once
 
 #include <string>
-
-#include <libraw/libraw.h>
+#include <array>
 
 #include <Halide.h>
+#include <libraw/libraw.h>
 #include "finish.h"
 
 class RawImage {

@@ -2,23 +2,24 @@
 #include <iostream>
 #include <fstream>
 
-#include <Halide.h>
-
-#include <src/Burst.h>
-
-#include <align_and_merge.h>
-
-Halide::Runtime::Buffer<uint16_t> align_and_merge(Halide::Runtime::Buffer<uint16_t> burst) {
-    if (burst.channels() < 2) {
-        return {};
-    }
-    Halide::Runtime::Buffer<uint16_t> merged_buffer(burst.width(), burst.height());
-    align_and_merge(burst, merged_buffer);
-    return merged_buffer;
-}
+//#include <Halide.h>
+//
+//#include <src/Burst.h>
+//
+//#include <align_and_merge.h>
+//
+//Halide::Runtime::Buffer<uint16_t> align_and_merge(Halide::Runtime::Buffer<uint16_t> burst) {
+//    if (burst.channels() < 2) {
+//        return {};
+//    }
+//    Halide::Runtime::Buffer<uint16_t> merged_buffer(burst.width(), burst.height());
+//    align_and_merge(burst, merged_buffer);
+//    return merged_buffer;
+//}
 
 int main(int argc, char* argv[]) {
-    if (argc < 3) {
+    return 1;
+    /*if (argc < 3) {
         std::cerr << "Usage: " << argv[0] << " dir_path out_img raw_img1 raw_img2 [...]" << std::endl;
         return 1;
     }
@@ -42,7 +43,7 @@ int main(int argc, char* argv[]) {
 
     const RawImage& raw = burst.GetRaw(0);
     const std::string merged_filename = dir_path + "/" + out_name;
-    raw.WriteDng(merged_filename, merged);
+    raw.WriteDng(merged_filename, merged);*/
 
-    return EXIT_SUCCESS;
+    //return EXIT_SUCCESS;
 }

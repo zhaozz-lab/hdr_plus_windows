@@ -2,9 +2,10 @@
 
 #include <unordered_map>
 
+#include "InputSource.h"
 #include <libraw/libraw.h>
 
-#include "InputSource.h"
+
 
 LibRaw2DngConverter::LibRaw2DngConverter(const RawImage& raw)
     : OutputStream()
