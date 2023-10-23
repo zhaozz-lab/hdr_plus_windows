@@ -1,4 +1,4 @@
-Note: The user "Titaniumtown" is now the primary maintainer of this repository; if you need to contact the owner contact "Titaniumtown".
+compile in windows using visual studio 2022 or visual studio 2022 
 
 # HDR+ Implementation
 Original Document on the subject (by Timothy Brooks): http://timothybrooks.com/tech/hdr-plus
