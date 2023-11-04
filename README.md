@@ -1,20 +1,14 @@
 compile in windows using visual studio 2022 or visual studio 2022 
-
-
 # HDR+ Implementation
 Original Document on the subject (by Timothy Brooks): http://timothybrooks.com/tech/hdr-plus
 
 ### Compilation instructions:
-1. Install libraw, libpng, and libjpeg.¹
-2. Download and compile llvm 3.9
-3. Install or compile the latest version Halide
-4. Go the folder you have the hdr-plus code in.
-5. From the project root directory, run the following commands:
+png halide libtiff libraw in thirdParty
 ```
 mkdir build
 cd build
-cmake -DHALIDE_DISTRIB_DIR=$(Insert halide directory) ..
-make -j$(expr $(nproc) \+ 1)
+cmake ..
+using visual studio 2022 generate
 ```
 
 ### HDR+ algorithm examples:
@@ -28,6 +22,13 @@ Usage: ./hdrplus [-c comp -g gain (optional)] dir_path out_img raw_img1 raw_img2
 
 The -c and -g flags change the amount of dynamic range compression and gain respectively. Although they are optional because they both have default values. 
 
-### Footnotes:
-  
-¹Also to install libraw, libpng, and libjpeg on macOS run ```brew install libraw libpng libjpeg```
+### result
+```
+hdrplus.exe ./img burst33.png burst33_3.CR2 burst33_5.CR2 burst33_6.CR2
+Opening ./img/burst33_3.CR2
+Opening ./img/burst33_5.CR2
+Opening ./img/burst33_6.CR2
+Black point: 2047
+White point: 15488
+RGGB: 2.24609 1 1 1.39355
+```
