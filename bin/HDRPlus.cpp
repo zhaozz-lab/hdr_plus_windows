@@ -22,7 +22,7 @@ public:
    const Compression c;
    const Gain g;
    
-   HDRPlus(Burst burst, const Compression  c, const Gain g)
+   HDRPlus(Burst& burst, const Compression  c, const Gain g)
        : burst(burst)
        , c(c)
        , g(g)

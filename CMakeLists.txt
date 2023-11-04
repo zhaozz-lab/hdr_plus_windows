@@ -4,29 +4,28 @@ project(HDR_PLUS)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})
-SET(JPEG_INCLUDE_DIR thirdParty/libjpeg/lib)
 
 set(PNG_LIBRARY thirdParty/libjpeg/lib)
 include("macro.cmake")
 set(CMAKE_CXX_STANDARD 11)
 
 # Define dependencies
-SET(HALIDE_DISTRIB_DIR "thirdParty/Halide-10.0.0-x86-64-windows-db901f7f7084025abc3cbb9d17b0f2d3f1745900/Halide-10.0.0-x86-64-windows")
+SET(HALIDE_DISTRIB_DIR "thirdParty/Halide-10.0.0-x86-64-windows")
 set(TIFF_INCLUDE_DIRS thirdParty/libtiff/include)
 if(DEFINED HALIDE_DISTRIB_DIR)
   list(APPEND CMAKE_PREFIX_PATH ${HALIDE_DISTRIB_DIR})
 endif(DEFINED HALIDE_DISTRIB_DIR)
 
-list(APPEND CMAKE_PREFIX_PATH zlib-1.2.7.f-win64-v1/zlib-win64)
+# list(APPEND CMAKE_PREFIX_PATH zlib-1.2.7.f-win64-v1/zlib-win64)
 if(DEFINED HALIDE_DISTRIB_DIR)
   link_directories(BEFORE "${HALIDE_DISTRIB_DIR}/lib")
 endif(DEFINED HALIDE_DISTRIB_DIR)
 find_package(Halide REQUIRED)
 
-find_package(ZLIB 1.2.7 REQUIRED)
+# find_package(ZLIB 1.2.7 REQUIRED)
 
 
-find_package(PNG REQUIRED)
+# find_package(PNG REQUIRED)
 set(src_files
     src/InputSource.cpp
     src/Burst.cpp
@@ -67,10 +66,11 @@ add_halide_library(align_and_merge
     # EXTRA_OUTPUTS "stmt;html;schedule") # uncomment for extra output
 )
 
-set(HALIDE_INCLUDE_PATH "thirdParty/Halide-10.0.0-x86-64-windows-db901f7f7084025abc3cbb9d17b0f2d3f1745900/Halide-10.0.0-x86-64-windows/include")
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${RAW2DNG_INCLUDE_DIRS} ${TIFF_INCLUDE_DIRS} ${HALIDE_INCLUDE_PATH} ${header_files})
+# set(HALIDE_INCLUDE_PATH ${HALIDE_DISTRIB_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${RAW2DNG_INCLUDE_DIRS} ${TIFF_INCLUDE_DIRS} ${HALIDE_INCLUDE_PATH} ${header_files}
+    ${HALIDE_DISTRIB_DIR}/include)
 link_directories("thirdParty/libraw/lib"
-  "thirdParty/Halide-10.0.0-x86-64-windows-db901f7f7084025abc3cbb9d17b0f2d3f1745900/Halide-10.0.0-x86-64-windows/lib/Release"
+  "thirdParty/Halide-10.0.0-x86-64-windows/lib/Release"
   "thirdParty/libtiff/lib"
   "thirdParty/png/lib"
   )
@@ -88,4 +88,4 @@ target_link_libraries(hdrplus
 
 add_executable(stack_frames bin/stack_frames.cpp ${src_files})
 add_dependencies(stack_frames align_and_merge)
-target_link_libraries(stack_frames Halide align_and_merge ${LIBRAW_LIBRARY} ${PNG_LIBRARIES} ${JPEG_LIBRARIES} ${TIFF_LIBRARIES} ${TIFFXX_LIBRARY})
+target_link_libraries(stack_frames Halide align_and_merge ${LIBRAW_LIBRARY} libpng.lib ${TIFF_LIBRARIES} ${TIFFXX_LIBRARY})
